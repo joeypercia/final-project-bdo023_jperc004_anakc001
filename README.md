@@ -23,8 +23,16 @@
   
   We believe this project can be completed with just the C++ standard library, using CMake to compile and the Googletest framework to test.
   
-  - Why is the project important/interesting?
-  - Inputs/Outputs
+  We think that this project could be interesting and important because it demonstrates how some basic design patterns could be combined to create a more complex program.
+  
+  - Inputs:
+         - Title (string)
+         - Description (string)
+         - Types (personal, work, study) (user defined objects)
+  - Outputs:
+         - Priority (int)
+         - Duration (int or double)
+         - Due Date (string) 
   - Other tools/technologies??
   
 
