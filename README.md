@@ -14,6 +14,7 @@
  >   * What problem you anticipate encountering when implementing your project that you will solve using the design pattern
  >   * Why the chosen design pattern will lead to a good solution to that problem
  > * This description should be in enough detail that the TA/instructor can determine the complexity of the project and if it is sufficient for the team members to complete in the time allotted. 
+ 
  Our project will be a task scheduler that will allow its user to view, add, delete, and modify a list of tasks. The tasks will have a variety of attributes including priority, type (personal/work/study), and due date. Users may create a list of tasks composed of other types of sub tasks. The user can also choose to sort their task list by priority, due date, and type. To accomplish this, we will use both composite and iterator design patterns.
  
  Creating tasks composed of other tasks can be accomplished with the composite design pattern. A composite design pattern simplifies the process of creating subtasks by allowing all tasks to be treated the same way through a common interface. By defining a base task class that we can perform all of our operations on, we can avoid the issue of having to define functions to handle every type of task. With the composite design pattern, complex or leaf objects are treated the same way, and allows complex objects to be composed of other complex or leaf objects, which is exactly the kind of functionality we need to create subtasks in our task scheduler.
