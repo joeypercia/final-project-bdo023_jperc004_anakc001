@@ -26,13 +26,13 @@
   We think that this project could be interesting and important because it demonstrates how some basic design patterns could be combined to create a more complex program.
   
   - Inputs:
-         > * Title (string)
-         > * Description (string)
-         > * Types (personal, work, study) (user defined objects)
+> * Title (string)
+> * Description (string)
+> * Types (personal, work, study) (user defined objects)
   - Outputs:
-         > * Priority (int)
-         > * Duration (int or double)
-         > * Due Date (string) 
+> * Priority (int)
+> * Duration (int or double)
+> * Due Date (string) 
   - Other tools/technologies??
   
 
