@@ -33,7 +33,7 @@
 > * Priority (int)
 > * Duration (int or double)
 > * Due Date (string) 
-  - Other tools/technologies??
+  - We will also rely on github work flow and unit testing in this project.
   
 
  > ## Phase II
