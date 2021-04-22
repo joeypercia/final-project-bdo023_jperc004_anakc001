@@ -28,7 +28,8 @@
   - Inputs:
 > * Title (string)
 > * Description (string)
-> * Types (personal, work, study) (user defined objects)
+> * Types of tasks: personal, work, study (Tasks)
+> * vector<Tasks*> (List of tasks)
   - Outputs:
 > * Priority (int)
 > * Duration (int or double)
