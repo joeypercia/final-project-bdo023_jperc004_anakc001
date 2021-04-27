@@ -1,6 +1,6 @@
 # Task Scheduler
 
- > Authors:\[Bang Do](https://github.com/FireFly0000)\ \[Artip Nakchinda](https://github.com/TheMarkVI)\ [Joseph Percia](https://github.com/joeypercia)\
+ > Authors:\[Bang Do](https://github.com/FireFly0000) \[Artip Nakchinda](https://github.com/TheMarkVI) [Joseph Percia](https://github.com/joeypercia)
 
   
 ## Project Description 
