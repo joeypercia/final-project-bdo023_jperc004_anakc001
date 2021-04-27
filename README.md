@@ -25,16 +25,16 @@
   
   We think that this project could be interesting and important because it demonstrates how some basic design patterns could be combined to create a more complex program.
   
-  - Inputs:
-* Title (string)
-* Description (string)
-* Types of tasks: personal, work, study (Tasks)
-* vector<Tasks*> (List of tasks)
-  - Outputs:
-* Priority (int)
-* Duration (int or double)
-* Due Date (string) 
-  - We will also rely on github work flow and unit testing in this project.
+ - Inputs:
+   * Title (string)
+   * Description (string)
+   * Types of tasks: personal, work, study (Tasks)
+   * vector<Tasks*> (List of tasks)
+ - Outputs:
+   * Priority (int)
+   * Duration (int or double)
+   * Due Date (string) 
+ - We will also rely on github work flow and unit testing in this project.
   
 
  > ## Phase II
