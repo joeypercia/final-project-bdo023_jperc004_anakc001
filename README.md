@@ -6,7 +6,7 @@
  
  Creating tasks composed of other tasks can be accomplished with the composite design pattern. A composite design pattern simplifies the process of creating subtasks by allowing all tasks to be treated the same way through a common interface. By defining a base task class that we can perform all of our operations on, we can avoid the issue of having to define functions to handle every type of task. With the composite design pattern, complex or leaf objects are treated the same way, and allows complex objects to be composed of other complex or leaf objects, which is exactly the kind of functionality we need to create subtasks in our task scheduler.
  
-  To solve the issue of filtering the user's tasks by certain criteria, we can use the iterator design pattern. In order to filter the tasks, we would need to implement different methods of iterating through the list depending on the criteria the user selected. For example, if we wanted to filter the user's task scheduler to only include a certain type of task, we could create a taskType iterator that would only visit tasks of the specified type. Or, if we wanted to filter by priority, we could create a priority iterator to get the priority of each task. Since we will most likely be using code to iterate through the task list many times throughout the project, having an interface to iterate through the task list will greatly reduce the amount of lines of code we use in the end.
+  To solve the issue of filtering the user's tasks by certain criteria, we can use the strategy design pattern. In order to filter the tasks, we would need to implement another class that has an aggregated relationship with the base class of the tasks. This class then can be derived into different interfaces that select certain tasks to print out based on different criteria such as priority or types of the tasks. For example if we want to print out the 5 most prioritized tasks, we can implement a method in one of those derived classes to filter the tasks based on their priority. Or if we want to filter the tasks based on their types then we can have a derived class to contain a method that filters out a certain type of tasks.   
   
   We believe this project can be completed with just the C++ standard library, using CMake to compile and the Googletest framework to test.
   
@@ -19,7 +19,6 @@
    * vector<Tasks*> (List of tasks)
  - Outputs:
    * Priority (int)
-   * Duration (int or double)
    * Due Date (string) 
  - We will also rely on github work flow and unit testing in this project.
   
