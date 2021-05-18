@@ -49,6 +49,12 @@ class TaskList: public BaseTasks{
 				}
 			}
 		}
+
+		virtual void del() {
+			// TODO : Implement delete function for a task list.
+			return;
+		}
+
 };
 #endif //__TASKLIST_HPP__
  

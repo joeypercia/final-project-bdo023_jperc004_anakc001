@@ -65,9 +65,9 @@ class Task: public BaseTasks{
 			}
 		}
 
-		virtual void deleteTask() { 
+		virtual void del() { 
 			delete this->print;
-			
+			// TODO: implement delete function for single task
 			return;
 		}
 
