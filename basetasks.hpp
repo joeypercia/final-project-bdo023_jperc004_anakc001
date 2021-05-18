@@ -18,7 +18,7 @@ class BaseTasks {
 		
 		virtual void display() = 0;
 		//virtual void edit() = 0;
-		//virtual void del() = 0;
+		virtual void deleteTask() = 0;
 
 };
 #endif //__BASETASKS_HPP__

@@ -63,5 +63,9 @@ class Task: public BaseTasks{
 			}
 		}
 
+		virtual void deleteTask() { 
+			return;
+		}
+
 };
 #endif //__TASK_HPP__
