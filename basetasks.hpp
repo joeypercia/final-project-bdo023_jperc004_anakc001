@@ -10,11 +10,11 @@ class BaseTasks {
 		BaseTasks(){ }
 		virtual ~BaseTasks() { }
 		
-		virtual int get_priority() { }
-		virtual std::string get_title() { }
-		virtual std::string get_description() { }
-		virtual std::string get_type() { }
-		virtual std::string get_due_date(){ } 
+		virtual int get_priority() { return 0; }
+		virtual std::string get_title() { return "0"; }
+		virtual std::string get_description() { return "0"; }
+		virtual std::string get_type() { return "0"; }
+		virtual std::string get_due_date(){ return "0"; } 
 		
 		virtual void display() = 0;
 		//virtual void edit() = 0;

@@ -66,6 +66,8 @@ class Task: public BaseTasks{
 		}
 
 		virtual void deleteTask() { 
+			delete this->print;
+			
 			return;
 		}
 
