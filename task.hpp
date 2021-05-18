@@ -66,8 +66,14 @@ class Task: public BaseTasks{
 		}
 
 		virtual void del() { 
-			delete this->print;
 			// TODO: implement delete function for single task
+			title = "";
+			description = "";
+			type = "";
+			due_date = "";
+			priority = -1;
+			delete this->print;
+			
 			return;
 		}
 

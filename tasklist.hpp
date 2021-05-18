@@ -51,6 +51,12 @@ class TaskList: public BaseTasks{
 
 			virtual void del() {
 				// TODO : Implement function to completely remove the task list.
+				title = "";
+				description = "";
+				priority = -1;
+				for(unsigned i = 0; i < list.size(); i++) { // Deallocate vector of pointers
+					list.at(i)->del();
+				}
 				delete this->print;
 
 				return;
