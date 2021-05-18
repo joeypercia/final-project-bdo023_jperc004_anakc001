@@ -51,6 +51,7 @@ class Task: public BaseTasks{
 				std::cout << this->get_type() << std::endl;
 				std::cout << this->get_due_date() << std::endl;
 				std::cout << this->get_priority() << std::endl;
+				std::cout << "====================================" << std::endl;
 			}
 			if (this->print != nullptr){
 				if(this->print->print(this)){
@@ -59,6 +60,7 @@ class Task: public BaseTasks{
 					std::cout << this->get_type() << std::endl;
                                 	std::cout << this->get_due_date() << std::endl;
                                 	std::cout << this->get_priority() << std::endl;
+					std::cout << "=================================" << std::endl;
 				}
 			}
 		}
