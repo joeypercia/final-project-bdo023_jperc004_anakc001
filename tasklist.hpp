@@ -14,13 +14,26 @@ private:
 	std::string description;
 	std::string type;
 	std::string duedate;
-	int priority;
+	int priority = 0;
 	std::vector<BaseTasks*> list;
 	Print* print = nullptr;
 public:
 	TaskList() {
-
-	};
+		this->title = "";
+		this->description = "";
+		this->type = "";
+		this->duedate = "";
+		this->priority = 0;
+		this->print = nullptr;
+	}
+	TaskList(std::string title, std::string description, std::string type, std::string duedate, int priority) {
+		this->title = title;
+		this->description = description;
+		this->type = type;
+		this->duedate = duedate;
+		this->priority = priority;
+		this->print = nullptr;
+	}
 	void add(BaseTasks* add) {
 		list.push_back(add);
 	}
@@ -43,7 +56,10 @@ public:
 		delete this->print;
 		print = new_print;
 	}
-	
+	BaseTasks* getTask(int index)
+	{
+		return this->list.at(index);
+	}
 	virtual void display() {
 		if (this->print == nullptr) {
 			for (auto task : list) {
@@ -84,6 +100,22 @@ public:
 	{
 		return list.at(index)->get_priority();
 	}
+	void set_priority(int userpriority) {
+		this->priority = userpriority;
+	}
+	void set_title(std::string usertitle) {
+		this->title = usertitle;
+	}
+	void set_description(std::string userdescription) {
+		this->description = userdescription;
+	}
+	void set_due_date(std::string userduedate) {
+		this->duedate = userduedate;
+	}
+	void set_type(std::string usertype) {
+		this->type = usertype;
+	}
+	bool islist() { return true; }
 };
 #endif //__TASKLIST_HPP__
  
