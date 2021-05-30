@@ -25,8 +25,9 @@ int main()
 	mathHWs.add(&hw2);
 	mathHWs.add(&hw3);
 	mathHWs.add(&hw4);
+	mathHWs.sortP();
 	
-	mathHWs.set_print(new Print_top5(&mathHWs));
+	//mathHWs.set_print(new Print_top5(&mathHWs));
 	mathHWs.display();	
 
 	return 0;
