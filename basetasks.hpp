@@ -25,6 +25,7 @@ class BaseTasks {
 		virtual bool islist() = 0;
 		virtual void display() = 0;
 		virtual void add(BaseTasks* task) = 0;
+		virtual void del(int index) = 0;
 		//virtual void edit() = 0;
 		//virtual void del() = 0;
 

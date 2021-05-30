@@ -116,6 +116,7 @@ public:
 	int get_size() { return this->list.size(); }
 	BaseTasks* get_task(int index) { return this->list.at(index); }
 	void add(BaseTasks* task) { this->list.push_back(task); }
+	void del(int index) { this->list.erase(list.begin() + index); }
 };
 #endif //__TASKLIST_HPP__
  

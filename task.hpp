@@ -86,5 +86,6 @@ public:
 	int get_size() { return 1; }
 	BaseTasks* get_task(int index) { return this; }
 	void add(BaseTasks* task) {}
+	void del(int index) {}
 };
 #endif //__TASK_HPP__

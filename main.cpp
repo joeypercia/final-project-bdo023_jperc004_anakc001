@@ -225,10 +225,10 @@ void modifyTask(int index, std::string parameter, TaskList& userList) {
 		{
 			std::cout << i << ": " << userList.getTask(index)->get_task(i)->get_title() << std::endl;
 		}
-		std::cout << "Please enter the index of the subtask you'd like to modify:" << std::endl;
-		std::cin >> userindex;
+		
 		std::cout << "Please enter the parameter you'd like to modify(title/description/type/duedate/priority)" << std::endl;
-		std::cout << "Or if you wish to add a new subtask to this tasklist, enter: add" << std::endl;
+		std::cout << "if you wish to add a new subtask to this tasklist, enter: add" << std::endl;
+		std::cout << "to delete the subtask, enter: delete" << std::endl;
 		std::cin >> userentry;
 		if (userentry == "add")
 		{
@@ -236,15 +236,23 @@ void modifyTask(int index, std::string parameter, TaskList& userList) {
 			userList.getTask(index)->add(newTask);
 			return;
 		}
-		else if (userentry == "description")
+		std::cout << "Please enter the index of the subtask you'd like to modify:" << std::endl;
+		std::cin >> userindex;
+		if (userentry == "delete")
 		{
+			userList.getTask(index)->del(userindex);
+			return;
+		}
+		std::cout << "Please enter the new " << userentry << std::endl;
+		if (userentry == "description")
+		{
+			
 			std::cin.ignore(100, '\n');
 			std::getline(std::cin, userparameter);
 			userList.getTask(index)->get_task(userindex)->set_description(userparameter);
 			return;
 		}
 
-		std::cout << "Please enter the new " << userentry << std::endl;
 		std::cin >> userparameter;
 
 
