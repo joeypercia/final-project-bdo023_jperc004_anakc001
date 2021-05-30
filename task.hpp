@@ -27,6 +27,15 @@ class Task: public BaseTasks{
                 }
 
 	public:
+		std::string get_type1(){
+			return t1;
+		}
+		std::string get_type2(){
+			return t2;
+		}
+		std::string get_type3(){
+			return t3;
+		}
 		Task(std::string title, std::string des, std::string type, std::string due_date, int priority, const char* argv[]){
 			this->title = title;
                         this->description = des;
@@ -82,24 +91,12 @@ class Task: public BaseTasks{
 		}
 		
 		virtual void display(){
-			if(this->print == nullptr){
-				std::cout << this->get_title() << std::endl;
-				std::cout << this->get_description() << std::endl;
-				std::cout << "Type: " << this->get_type() << std::endl;
-				std::cout << "Due date: " <<  this->get_due_date() << std::endl;
-				std::cout << "Priority: " <<  this->get_priority() << std::endl;
-				std::cout << "====================================" << std::endl;
-			}
-			if (this->print != nullptr){
-				if(this->print->print(this)){
-					std::cout << this->get_title() << std::endl;
-                                	std::cout << this->get_description() << std::endl;
-					std::cout << "Type: " << this->get_type() << std::endl;
-                                	std::cout << "Due date: " << this->get_due_date() << std::endl;
-                                	std::cout << "Priority: " <<  this->get_priority() << std::endl;
-					std::cout << "=================================" << std::endl;
-				}
-			}
+			std::cout << this->get_title() << std::endl;
+			std::cout << this->get_description() << std::endl;
+			std::cout << "Type: " << this->get_type() << std::endl;
+			std::cout << "Due date: " <<  this->get_due_date() << std::endl;
+			std::cout << "Priority: " <<  this->get_priority() << std::endl;
+			std::cout << "====================================" << std::endl;
 		}
 
 };

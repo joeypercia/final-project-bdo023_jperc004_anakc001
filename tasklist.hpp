@@ -40,8 +40,13 @@ class TaskList: public BaseTasks{
                         r->set_type(type);
                         r->set_description(des);
                         r->set_due_date(due);
-	      }	
+	      }
         public:
+		int top_priority(){
+			this->sortP();
+                	return list.at(4)->get_priority();
+             	}
+
 		TaskList(){
 		
 		};
@@ -72,12 +77,17 @@ class TaskList: public BaseTasks{
                         print = new_print;
                 }
 		virtual void display(){
-			if(this->print == nullptr){
+			if (list.size() <= 5){
+				for(auto task: list){
+                                	task->display();
+                        	}
+			}
+			else if(this->print == nullptr){
 				for(auto task: list){
 					task->display();
 				}
 			}
-			if(this->print != nullptr){
+			else if(this->print != nullptr){
 				for(auto task: list){
 					if (this->print->print(task)){
 						task->display();
