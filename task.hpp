@@ -16,19 +16,30 @@ class Task: public BaseTasks{
 		std::string due_date;
 		int priority;
 		Print* print = nullptr;
+		
+		std:: string t1;
+		std:: string t2;
+		std:: string t3;
+		void set_available_type(const char* agrv[]){
+                        t1 = agrv[1];
+                        t2 = agrv[2];
+                        t3 = agrv[3];
+                }
+
 	public:
-		Task(std::string title, std::string des, std::string type, std::string due_date, int priority){
+		Task(std::string title, std::string des, std::string type, std::string due_date, int priority, const char* argv[]){
 			this->title = title;
                         this->description = des;
-                        if(type == "personal" || type == "study" || type == "work"){
+			set_available_type(argv);
+                        if(type == t1 || type == t2 || type == t3){
                                 this->type = type;
                         }
                         else{
-                                while(type != "personal" && type != "study" && type != "work"){
-                                        std::cout << "Type can only be \"personal\", \"study\", or \"work\". Please enter again: " << std::endl;
-                                        std::string t;
-                                        std::cin >> t;
-                                        type = t;
+                               	while(type != t1 && type != t2 && type != t3){
+                                   std::cout << "Type " << type << " is invalid. Type can only be \"" << t1 << "\", \"" << t2 << "\", or \"" <<t3<< "\". Please enter again: " << std::endl;
+                                   std::string t;
+                                   std::cin >> t;
+                                   type = t;
                                 }
                                 this->type = type;
                         }
