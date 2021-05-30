@@ -21,11 +21,11 @@ class Print_top5: public Print{
 		BaseTasks* list = nullptr;
 	public:	
 		Print_top5(BaseTasks* t){
+			t->sortP();
 			list = t;
 		}
 		
 		virtual bool print(BaseTasks* t){
-			list->sortP();
 			if (t->get_priority() <= list->top_priority() ){
 				return true;
 			}
@@ -41,7 +41,7 @@ class Print_type1: public Print{
                 }
 
                 virtual bool print(BaseTasks* t){
-                        if (t->get_type() == t->get_type1()){
+			if (t->get_type() == t->get_type1()){
                                 return true;
                         }
                         else return false;

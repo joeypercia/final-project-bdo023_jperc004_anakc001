@@ -25,17 +25,35 @@ class Task: public BaseTasks{
                         t2 = agrv[2];
                         t3 = agrv[3];
                 }
+		std::string get_type1(){
+                        return t1;
+                }
+                std::string get_type2(){
+                        return t2;
+                }
+                std::string get_type3(){
+                        return t3;
+                }
+     		void set_priority(int t){
+                        this->priority = t;
+                }
+                void set_title(std::string t){
+                        this->title = t;
+                }
+                void set_type(std::string t){
+                        this->type = t;
+                }
+                void set_description(std::string t){
+                        this->description = t;
+                }
+                void set_due_date(std::string t){
+                        this->due_date = t;
+                }
+
+		friend class Print_type1;
+		friend class TaskList;
 
 	public:
-		std::string get_type1(){
-			return t1;
-		}
-		std::string get_type2(){
-			return t2;
-		}
-		std::string get_type3(){
-			return t3;
-		}
 		Task(std::string title, std::string des, std::string type, std::string due_date, int priority, const char* argv[]){
 			this->title = title;
                         this->description = des;
@@ -59,20 +77,8 @@ class Task: public BaseTasks{
 			delete this->print;
 			print = new_print;
 		}
-		void set_priority(int t){ 
-			this->priority = t;
-		}
-		void set_title(std::string t){
-			this->title = t;
-		}
-		void set_type(std::string t){
-			this->type = t;
-		}
-   		void set_description(std::string t){
-			this->description = t;
-		}
-		void set_due_date(std::string t){
-			this->due_date = t;
+		int get_size(){
+			return 1;
 		}
 		int get_priority(){
 			return this->priority;

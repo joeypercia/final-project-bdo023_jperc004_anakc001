@@ -3,6 +3,7 @@
 
 #include<string>
 #include "basetasks.hpp"
+#include "task.hpp"
 #include "print.hpp"
 #include <vector>
 #include <algorithm>
@@ -16,7 +17,11 @@ class TaskList: public BaseTasks{
                 int priority;
 		std::vector<BaseTasks*> list;
                 Print* print = nullptr;
-		void swap(BaseTasks* l, BaseTasks* r){
+		void swap(int _1, int _2){
+		  BaseTasks* temp = list.at(_1);
+		  list.at(_1) = list.at(_2);
+		  list.at(_2) = temp; 
+		/*if(l->get_size() == 1 && r->get_size() == 1){	
 			int pt;
 			std::string title;
 			std::string type;
@@ -40,49 +45,60 @@ class TaskList: public BaseTasks{
                         r->set_type(type);
                         r->set_description(des);
                         r->set_due_date(due);
+		   }*/
+		   
 	      }
+	      friend class Print_top5;
         public:
-		int top_priority(){
-			this->sortP();
-                	return list.at(4)->get_priority();
-             	}
-
-		TaskList(){
 		
+		~TaskList(){
+			delete print;
+		}
+		TaskList(std::string title, std::string description, int p){
+			this->priority = p;
+			this->title = title;
+			this->description = description;	
 		};
+		int top_priority(){
+                        this->sortP();
+			if(list.size() >= 5)
+				return list.at(4)->get_priority();
+			else return list.at(list.size()-1)->get_priority();
+              	}
+
                 void sortP(){
 			for(int i = 1; i < list.size(); i++){
 				for(int j = 0; j < list.size()-1; j++){
-					if(this->get_priority(j) > this->get_priority(j+1)){
-						swap(list.at(j),list.at(j+1));
+					if(list.at(j)->get_priority() > list.at(j+1)->get_priority()){
+						swap(j,j+1);
 					}
 				}
 			}
-			//sort(list.begin(), list.end());		
 		}
 		void add(BaseTasks* add){
 			list.push_back(add);
 		}
-		int get_priority(int id){
-                        return list.at(id)->get_priority();
+		int get_priority(){
+                        return this->priority;
                 }
-                std::string get_title(int id) {
-                        return list.at(id)->get_title();
+                std::string get_title() {
+                        return this->title;
                 }
-                std::string get_description(int id){
-                        return list.at(id)->get_description();
+                std::string get_description(){
+                        return this->description;
                 }
 		void set_print(Print* new_print){
                         delete this->print;
                         print = new_print;
                 }
 		virtual void display(){
-			if (list.size() <= 5){
-				for(auto task: list){
-                                	task->display();
-                        	}
-			}
-			else if(this->print == nullptr){
+			std::cout<< std::endl << "======== " << this->title << " ========= "<< this->description << " ============ Priority: " << this->priority << std::endl;
+			//if (list.size() <= 5){
+				//for(auto task: list){
+					//task->display();
+                        	//}
+			//}
+			if(this->print == nullptr){
 				for(auto task: list){
 					task->display();
 				}
