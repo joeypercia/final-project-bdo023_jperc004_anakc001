@@ -1,3 +1,5 @@
+#pragma once
+
 #ifndef __TASK_HPP__
 #define __TASK_HPP__
 
@@ -81,5 +83,8 @@ public:
 		}
 	}
 	bool islist() { return false; }
+	int get_size() { return 1; }
+	BaseTasks* get_task(int index) { return this; }
+	void add(BaseTasks* task) {}
 };
 #endif //__TASK_HPP__

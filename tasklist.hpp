@@ -23,7 +23,7 @@ public:
 		this->description = "";
 		this->type = "";
 		this->duedate = "";
-		this->priority = 0;
+		this->TaskList::priority = 0;
 		this->print = nullptr;
 	}
 	TaskList(std::string title, std::string description, std::string type, std::string duedate, int priority) {
@@ -33,9 +33,6 @@ public:
 		this->duedate = duedate;
 		this->priority = priority;
 		this->print = nullptr;
-	}
-	void add(BaseTasks* add) {
-		list.push_back(add);
 	}
 	int get_priority() {
 		return this->priority;
@@ -116,6 +113,9 @@ public:
 		this->type = usertype;
 	}
 	bool islist() { return true; }
+	int get_size() { return this->list.size(); }
+	BaseTasks* get_task(int index) { return this->list.at(index); }
+	void add(BaseTasks* task) { this->list.push_back(task); }
 };
 #endif //__TASKLIST_HPP__
  
