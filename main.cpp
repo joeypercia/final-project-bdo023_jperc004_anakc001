@@ -1,3 +1,5 @@
+#pragma once
+//#include "basetasks.hpp"
 #include "task.hpp"
 #include "print.hpp"
 #include "tasklist.hpp"
@@ -12,130 +14,120 @@ TaskList undo(std::stack<TaskList>& userStack);
 void addtoStack(std::stack<TaskList>& userStack, TaskList userList);
 
 int main() 
-{
-#pragma once
-	//#include "basetasks.hpp"
-#include "print.hpp"
-#include "tasklist.hpp"
-#include "task.hpp"
-#include "print.hpp"
+	{
+	char userinput = '0';
+	int userindex = 0;
+	std::string userparameter = "0";
+	TaskList userList;
+	std::stack<TaskList> undoStack;
+	addtoStack(undoStack, userList);
 
-		char userinput = '0';
-		int userindex = 0;
-		std::string userparameter = "0";
-		TaskList userList;
-		std::stack<TaskList> undoStack;
-		addtoStack(undoStack, userList);
+	while (userinput != 'q') {
+		std::cout << "Main Menu" << std::endl;
+		std::cout << "a - Add a task" << std::endl;
+		std::cout << "l - Add a tasklist" << std::endl;
+		std::cout << "r - Remove a task/tasklist" << std::endl;
+		std::cout << "p - Print all tasks" << std::endl;
+		std::cout << "v - View your tasklists" << std::endl; 
+		//std::cout << "s - Select a strategy to display certain tasks" << std::endl;
+		std::cout << "m - Modify a task/tasklist" << std::endl;
+		std::cout << "u - Undo previous operation" << std::endl;
+		std::cout << "q - Quit Task Scheduler" << std::endl;
+		std::cout << "Please enter a character: ";
+		std::cin >> userinput;
+		std::cout << std::endl;
 
-		while (userinput != 'q') {
-			std::cout << "Main Menu" << std::endl;
-			std::cout << "a - Add a task" << std::endl;
-			std::cout << "l - Add a tasklist" << std::endl;
-			std::cout << "r - Remove a task/tasklist" << std::endl;
-			std::cout << "p - Print all tasks" << std::endl;
-			std::cout << "v - View your tasklists" << std::endl; 
-			//std::cout << "s - Select a strategy to display certain tasks" << std::endl;
-			std::cout << "m - Modify a task/tasklist" << std::endl;
-			std::cout << "u - Undo previous operation" << std::endl;
-			std::cout << "q - Quit Task Scheduler" << std::endl;
-			std::cout << "Please enter a character: ";
-			std::cin >> userinput;
-			std::cout << std::endl;
-
-			if (userinput == 'a')
-			{
-
-				BaseTasks* userTask = inputTask();
-				userList.add(userTask);
-				addtoStack(undoStack, userList);
-			}
-			else if (userinput == 'l')
-			{
-				TaskList* newTaskList = inputTaskList();
-				
-				while (userinput != 'n') {
-					userinput = '0';
-					BaseTasks* userTask = inputTask();
-					newTaskList->add(userTask);
-					//addtoStack(undoStack, userList);
-
-
-					std::cout << "Continue inputting tasks to your tasklist? Input y/n" << std::endl;
-					while (userinput != 'y' && userinput != 'n')
-					{
-						std::cin >> userinput;
-					}
-					
-				}
-				BaseTasks* userTask = newTaskList;
-				userList.add(userTask);
-				addtoStack(undoStack, userList);
-			}
-			else if (userinput == 'r')
-			{
-				if(userList.getsize() <= 0) {
-					std::cout << "There are no tasks to be removed." << std::endl;
-					std::cout << std::endl;
-				}
-				else {
-					for (int i = 0; i < userList.getsize(); ++i)
-					{
-						std::cout << i << ": " << userList.get_title(i) << std::endl;
-					}
-
-					std::cout << "Please enter the index of the task or tasklist you'd like to remove:" << std::endl;
-					std::cin >> userindex;
-					userList.removeTask(userindex);
-					addtoStack(undoStack, userList);
-				}
-			}
-			else if (userinput == 'p') {
-				for (int i = 0; i < userList.getsize(); ++i) {
-					std::cout << userList.get_title(i) << ": " << userList.get_description(i) << std::endl << userList.get_type(i) << std::endl << userList.get_due_date(i)
-						<< std::endl << userList.get_priority(i) << std::endl << std::endl;
-				}
-			}
+		if (userinput == 'a')
+		{
+			BaseTasks* userTask = inputTask();
+			userList.add(userTask);
+			addtoStack(undoStack, userList);
+		}
+		else if (userinput == 'l')
+		{
+			TaskList* newTaskList = inputTaskList();
 			
-			//todo: Change modify function to be able to modify the subtasks of a user's tasklist.
-			else if (userinput == 'm')
-			{
+			while (userinput != 'n') {
+				userinput = '0';
+				BaseTasks* userTask = inputTask();
+				newTaskList->add(userTask);
+				//addtoStack(undoStack, userList);
+				std::cout << "Continue inputting tasks to your tasklist? Input y/n" << std::endl;
+				while (userinput != 'y' && userinput != 'n')
+				{
+					std::cin >> userinput;
+				}
+				
+			}
+			BaseTasks* userTask = newTaskList;
+			userList.add(userTask);
+			addtoStack(undoStack, userList);
+		}
+		else if (userinput == 'r')
+		{
+			if(userList.getsize() <= 0) {
+				std::cout << "There are no tasks to be removed." << std::endl;
+				std::cout << std::endl;
+			}
+			else {
 				for (int i = 0; i < userList.getsize(); ++i)
 				{
 					std::cout << i << ": " << userList.get_title(i) << std::endl;
 				}
-				// add error checking
-				std::cout << "Please enter the index of the task or tasklist you'd like to modify:" << std::endl;
+
+				std::cout << "Please enter the index of the task or tasklist you'd like to remove:" << std::endl;
 				std::cin >> userindex;
-				std::cout << "Please enter the parameter you'd like to modify (title, description, type, duedate, priority, or subtask)"
-					<< std::endl;
-				std::cin >> userparameter;
-				modifyTask(userindex, userparameter, userList);
+				userList.removeTask(userindex);
 				addtoStack(undoStack, userList);
 			}
-			else if (userinput == 'v') {
-				for (int i = 0; i < userList.getsize(); ++i)
-				{
-					if (userList.islist() == true) {
-						std::cout << i << ": " << userList.get_title(i) << std::endl;
-					}
-				}
-				 
-				std::cout << "Please enter the index of the tasklist you'd like to view:" << std::endl;
-				std::cin >> userindex;
-				userList.getTask(userindex)->display();
-			}
-			else if (userinput == 'u') {
-				if (undoStack.size() == 1) {
-					std::cout << "Can not undo, list is already empty" << std::endl;
-				}
-				else {
-					userList = undo(undoStack);
-				}
-			}
-			else if (userinput == 'q') {
-				return 0;
+		}
+		else if (userinput == 'p') {
+			for (int i = 0; i < userList.getsize(); ++i) {
+				std::cout << userList.get_title(i) << ": " << userList.get_description(i) << std::endl << userList.get_type(i) << std::endl << userList.get_due_date(i)
+					<< std::endl << userList.get_priority(i) << std::endl << std::endl;
 			}
 		}
+		
+		//todo: Change modify function to be able to modify the subtasks of a user's tasklist.
+		else if (userinput == 'm')
+		{
+			for (int i = 0; i < userList.getsize(); ++i)
+			{
+				std::cout << i << ": " << userList.get_title(i) << std::endl;
+			}
+			// add error checking
+			std::cout << "Please enter the index of the task or tasklist you'd like to modify:" << std::endl;
+			std::cin >> userindex;
+			std::cout << "Please enter the parameter you'd like to modify (title, description, type, duedate, priority, or subtask)"
+				<< std::endl;
+			std::cin >> userparameter;
+			modifyTask(userindex, userparameter, userList);
+			addtoStack(undoStack, userList);
+		}
+		else if (userinput == 'v') {
+			for (int i = 0; i < userList.getsize(); ++i)
+			{
+				if (userList.islist() == true) {
+					std::cout << i << ": " << userList.get_title(i) << std::endl;
+				}
+			}
+				
+			std::cout << "Please enter the index of the tasklist you'd like to view:" << std::endl;
+			std::cin >> userindex;
+			userList.getTask(userindex)->display();
+		}
+		else if (userinput == 'u') {
+			if (undoStack.size() == 1) {
+				std::cout << "Can not undo, list is already empty" << std::endl;
+			}
+			else {
+				userList = undo(undoStack);
+			}
+		}
+		else if (userinput == 'q') {
+			return 0;
+		}
+	}
 
 	return 0;
 };
