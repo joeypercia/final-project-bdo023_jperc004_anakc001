@@ -81,6 +81,8 @@ TEST(TaskListPriority, prioritySet1) {
     EXPECT_EQ(test.get_priority(), 1);
 }
 TEST(TaskListPriority, prioritySet2) {
+    // set priority 999 for test case.
+    // Edge case: Task priorities wouldn't go as far out as 999
     TaskList test;
 
     test.set_priority(999);
@@ -97,7 +99,7 @@ TEST(TaskListPriority, prioritySet3) {
     EXPECT_EQ(test.get_priority(), 0);
 }
 TEST(TaskListPriority, prioritySet4) {
-    // set priority 0 for this test case
+    // set priority -1 for this test case
     // Suggestion: Set off an error?
     TaskList test;
     
@@ -108,8 +110,83 @@ TEST(TaskListPriority, prioritySet4) {
 // end
 
 // Set title function
+TEST(TaskListTitle, titleSet1_normalCase) {
+    TaskList test;
+    
+    test.set_title("TitleTest");
+    
+    EXPECT_EQ(test.get_title(), "TitleTest");
+}
+TEST(TaskListTitle, titleSet2_spacedString) {
+    TaskList test;
+    
+    test.set_title("Title Test");
+    
+    EXPECT_EQ(test.get_title(), "Title Test");
+}
+TEST(TaskListTitle, titleSet3_NumberedString) {
+    TaskList test;
+    
+    test.set_title("12345");
+    
+    EXPECT_EQ(test.get_title(), "12345");
+}
+TEST(TaskListTitle, titleSet4_SpecialChars) {
+    TaskList test;
+    
+    test.set_title("^Test!@#$%");
+    
+    EXPECT_EQ(test.get_title(), "^Test!@#$%");
+}
+// end suite
 
+// Set description function
+TEST(TaskListDescription, descSet1_normalCase) {
+    TaskList test;
+    
+    test.set_description("DescriptionTest. This task should be done soon.");
+    
+    EXPECT_EQ(test.get_description(), "DescriptionTest. This task should be done soon.");
+}
+TEST(TaskListDescription, descSet_longDescription) {
+    TaskList test;
+    
+    test.set_description("test 1 2 3 4 5 !@#$% check, this test requires a check if the class works or not. abcdefghijklmnopqrstuvwxyz Does this class work or not. Create multiple test cases and check if the classes work. This is important");
+    EXPECT_EQ(test.get_description(), "test 1 2 3 4 5 !@#$% check, this test requires a check if the class works or not. abcdefghijklmnopqrstuvwxyz Does this class work or not. Create multiple test cases and check if the classes work. This is important");
+}
+// end suite
 
+// set due date begin
+TEST(TaskListDueDate, dueSet_standardDate1) {
+    TaskList test;
+
+    test.set_due_date("01/01/1971");
+
+    EXPECT_EQ(test.get_due_date(), "01/01/1971");
+}
+TEST(TaskListDueDate, dueSet_standardDate2) {
+    TaskList test;
+
+    test.set_due_date("12/31/2100");
+
+    EXPECT_EQ(test.get_due_date(), "12/31/2100");
+}
+TEST(DISABLED_TaskListDueDate, dueSet_incorrectFormat) {
+    // Not sure about this test case:
+    // This test case checks if the due date is appropriate
+    // Format: MM/DD/YYYY
+    // However, this edge case checks if the due date is invalid since
+    //  a 13th month doesn't exist, and a 32nd day doesn't exist.
+    // Disabled this test if we're not going to fix this issue.
+
+    TaskList test;
+
+    test.set_due_date("13/32/2025");
+
+    EXPECT_EQ(test.get_due_date(), "Invalid");
+    // EXPECT_EQ(test.get_due_date(), "13/32/2025");
+}
+// end due date test suite
 
 
 
