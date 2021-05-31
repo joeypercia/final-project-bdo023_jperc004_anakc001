@@ -54,6 +54,9 @@ class Task: public BaseTasks{
 		friend class TaskList;
 
 	public:
+		~Task(){
+			delete print;
+		}
 		Task(std::string title, std::string des, std::string type, std::string due_date, int priority, const char* argv[]){
 			this->title = title;
                         this->description = des;
