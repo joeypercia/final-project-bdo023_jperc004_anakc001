@@ -1,6 +1,6 @@
 #ifndef __BASETASKS_HPP__
 #define __BASETASKS_HPP__
-
+#include <vector>
 class Print;
 
 class BaseTasks {
@@ -23,6 +23,7 @@ class BaseTasks {
 		virtual std::string get_type1(){ }
 		virtual std::string get_type2(){ }
 		virtual std::string get_type3(){ }
+		virtual std::vector<BaseTasks*> get_list(){ }
  
 		virtual int get_priority() { }
 		virtual std::string get_title() { }

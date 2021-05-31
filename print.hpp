@@ -42,10 +42,42 @@ class Print_type1: public Print{
 
                 virtual bool print(BaseTasks* t){
 			if (t->get_type() == t->get_type1()){
-                                return true;
+                        	return true;
                         }
                         else return false;
                 }
 };
+class Print_type2: public Print{
+        private:
+                BaseTasks* list = nullptr;
+        public:
+                Print_type2(BaseTasks* t){
+                        list = t;
+                }
+
+                virtual bool print(BaseTasks* t){
+                	if (t->get_type() == t->get_type2()){
+                        	return true;
+                  	}       
+                       	else return false;
+		}
+};
+class Print_type3: public Print{
+        private:
+                BaseTasks* list = nullptr;
+        public:
+                Print_type3(BaseTasks* t){
+                        list = t;
+                }
+
+                virtual bool print(BaseTasks* t){
+               		if (t->get_type() == t->get_type3()){
+                        	return true;
+                       	}
+                       	else return false;
+       		}
+};
+
+
 
 #endif //__PRINT_HPP__

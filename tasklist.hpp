@@ -18,37 +18,12 @@ class TaskList: public BaseTasks{
 		std::vector<BaseTasks*> list;
                 Print* print = nullptr;
 		void swap(int _1, int _2){
-		  BaseTasks* temp = list.at(_1);
-		  list.at(_1) = list.at(_2);
-		  list.at(_2) = temp; 
-		/*if(l->get_size() == 1 && r->get_size() == 1){	
-			int pt;
-			std::string title;
-			std::string type;
-			std::string des;
-			std::string due;
-			
-			pt = l->get_priority();
-			title = l->get_title();
-			type = l->get_type();
-			des = l->get_description();
-			due = l->get_due_date();
-			
-			l->set_priority(r->get_priority());
-			l->set_title(r->get_title());
-			l->set_type(r->get_type());
-			l->set_description(r->get_description());
-			l->set_due_date(r->get_due_date());
-
-			r->set_priority(pt);
-			r->set_title(title);
-                        r->set_type(type);
-                        r->set_description(des);
-                        r->set_due_date(due);
-		   }*/
-		   
-	      }
-	      friend class Print_top5;
+			BaseTasks* temp = list.at(_1);
+		  	list.at(_1) = list.at(_2);
+		  	list.at(_2) = temp; 
+	      	}
+		
+	      	friend class Print_top5;
         public:
 		
 		~TaskList(){
@@ -59,6 +34,12 @@ class TaskList: public BaseTasks{
 			this->title = title;
 			this->description = description;	
 		};
+		int get_size(){
+                        return list.size();
+                }
+		std::vector<BaseTasks*> get_list(){
+			return this->list;
+		}
 		int top_priority(){
                         this->sortP();
 			if(list.size() >= 5)
@@ -87,29 +68,44 @@ class TaskList: public BaseTasks{
                 std::string get_description(){
                         return this->description;
                 }
+		std::string get_type(){
+
+		}
 		void set_print(Print* new_print){
                         delete this->print;
                         print = new_print;
                 }
 		virtual void display(){
 			std::cout<< std::endl << "======== " << this->title << " ========= "<< this->description << " ============ Priority: " << this->priority << std::endl;
-			//if (list.size() <= 5){
-				//for(auto task: list){
-					//task->display();
-                        	//}
-			//}
 			if(this->print == nullptr){
 				for(auto task: list){
 					task->display();
 				}
 			}
-			else if(this->print != nullptr){
+			else if(dynamic_cast<Print_top5*>(print) != nullptr){
 				for(auto task: list){
 					if (this->print->print(task)){
 						task->display();
 					}
 				}
 			}
+			else if(dynamic_cast<Print_type1*>(print) != nullptr || dynamic_cast<Print_type2*>(print) != nullptr || dynamic_cast<Print_type3*>(print) != nullptr){
+				for(auto task: list){
+                                	if(task->get_size() == 1){
+						if (this->print->print(task)){
+                                        		task->display();
+                                		}
+					}
+					else if(task->get_size() >1){
+						for(auto task2: task->get_list()){
+							if(this->print->print(task2)){
+								task2->display();
+							}
+						
+						}
+					}
+                                }
+  			}
 		}
 };
 #endif //__TASKLIST_HPP__
