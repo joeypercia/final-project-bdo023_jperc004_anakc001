@@ -73,15 +73,21 @@ int main()
 			}
 			else if (userinput == 'r')
 			{
-				for (int i = 0; i < userList.getsize(); ++i)
-				{
-					std::cout << i << ": " << userList.get_title(i) << std::endl;
+				if(userList.getsize() <= 0) {
+					std::cout << "There are no tasks to be removed." << std::endl;
+					std::cout << std::endl;
 				}
+				else {
+					for (int i = 0; i < userList.getsize(); ++i)
+					{
+						std::cout << i << ": " << userList.get_title(i) << std::endl;
+					}
 
-				std::cout << "Please enter the index of the task or tasklist you'd like to remove:" << std::endl;
-				std::cin >> userindex;
-				userList.removeTask(userindex);
-				addtoStack(undoStack, userList);
+					std::cout << "Please enter the index of the task or tasklist you'd like to remove:" << std::endl;
+					std::cin >> userindex;
+					userList.removeTask(userindex);
+					addtoStack(undoStack, userList);
+				}
 			}
 			else if (userinput == 'p') {
 				for (int i = 0; i < userList.getsize(); ++i) {
