@@ -17,27 +17,22 @@ class Print{
 };
 
 class Print_top5: public Print{
-	private:
-		BaseTasks* list = nullptr;
 	public:	
 		Print_top5(BaseTasks* t){
 			t->sortP();
-			list = t;
 		}
 		
 		virtual bool print(BaseTasks* t){
-			if (t->get_priority() <= list->top_priority() ){
+			if (t->get_priority() <= t->top_priority() ){
 				return true;
 			}
 			else return false;
 		}
 };
 class Print_type1: public Print{
-        private:
-                BaseTasks* list = nullptr;
-        public:
+	public:
                 Print_type1(BaseTasks* t){
-                        list = t;
+		
                 }
 
                 virtual bool print(BaseTasks* t){
@@ -48,11 +43,9 @@ class Print_type1: public Print{
                 }
 };
 class Print_type2: public Print{
-        private:
-                BaseTasks* list = nullptr;
         public:
                 Print_type2(BaseTasks* t){
-                        list = t;
+                
                 }
 
                 virtual bool print(BaseTasks* t){
@@ -63,11 +56,8 @@ class Print_type2: public Print{
 		}
 };
 class Print_type3: public Print{
-        private:
-                BaseTasks* list = nullptr;
         public:
                 Print_type3(BaseTasks* t){
-                        list = t;
                 }
 
                 virtual bool print(BaseTasks* t){
@@ -77,6 +67,22 @@ class Print_type3: public Print{
                        	else return false;
        		}
 };
+class Print_date: public Print{
+        private:
+                std::string date;
+        public:
+                Print_date(BaseTasks* t, std::string date){
+                        this->date = date;
+                }
+
+                virtual bool print(BaseTasks* t){
+                        if (t->get_due_date() == this->date){
+                                return true;
+                        }
+                        else return false;
+                }
+};
+
 
 
 

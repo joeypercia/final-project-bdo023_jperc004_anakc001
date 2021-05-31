@@ -80,9 +80,6 @@ class Task: public BaseTasks{
 			delete this->print;
 			print = new_print;
 		}
-		int get_size(){
-			return 1;
-		}
 		int get_priority(){
 			return this->priority;
 		}
@@ -98,7 +95,24 @@ class Task: public BaseTasks{
 		std::string get_due_date(){
 			return this->due_date;
 		}
-		
+		virtual void edit(std::string t, std::string d, std::string type, std::string date, int p){
+			set_title(t);
+			set_description(d);
+			if(type == t1 || type == t2 || type == t3){
+				set_type(type);
+			}
+			else{
+				 while(type != t1 && type != t2 && type != t3){
+                                   std::cout << "Type " << type << " is invalid. Type can only be \"" << t1 << "\", \"" << t2 << "\", or \"" <<t3<< "\". Please enter again: " << std::endl;
+                                   std::string temp;
+                                   std::cin >> temp;
+                                   type = temp;
+                                }
+				set_type(type);
+			}
+			set_priority(p);
+		}
+				
 		virtual void display(){
 			std::cout << this->get_title() << std::endl;
 			std::cout << this->get_description() << std::endl;
@@ -106,6 +120,9 @@ class Task: public BaseTasks{
 			std::cout << "Due date: " <<  this->get_due_date() << std::endl;
 			std::cout << "Priority: " <<  this->get_priority() << std::endl;
 			std::cout << "====================================" << std::endl;
+		}
+		virtual void del(){
+			delete this;
 		}
 
 };

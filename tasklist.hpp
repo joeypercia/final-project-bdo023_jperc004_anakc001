@@ -34,6 +34,19 @@ class TaskList: public BaseTasks{
 			this->title = title;
 			this->description = description;	
 		};
+		void edit_list(std::string t, std::string d, int p){
+			this->priority = p;
+                        this->title = t;
+                        this->description = d;
+		}
+		void edit_list_at(std::string t, std::string d, std::string type, std::string date, int p, int id ){
+			if(dynamic_cast<Task*>(list.at(id)) != nullptr){
+				list.at(id)->edit(t,d,type,date,p);
+			}
+			else if(dynamic_cast<TaskList*>(list.at(id)) != nullptr){
+				list.at(id)->edit_list(t,d,p);
+			}
+		}
 		int get_size(){
                         return list.size();
                 }
@@ -89,14 +102,15 @@ class TaskList: public BaseTasks{
 					}
 				}
 			}
-			else if(dynamic_cast<Print_type1*>(print) != nullptr || dynamic_cast<Print_type2*>(print) != nullptr || dynamic_cast<Print_type3*>(print) != nullptr){
+			else if(dynamic_cast<Print_type1*>(print) != nullptr || dynamic_cast<Print_type2*>(print) != nullptr || dynamic_cast<Print_type3*>(print) != nullptr || 
+			dynamic_cast<Print_date*>(print) != nullptr){
 				for(auto task: list){
-                                	if(task->get_size() == 1){
+                                	if(dynamic_cast<Task*>(task) != nullptr){
 						if (this->print->print(task)){
                                         		task->display();
                                 		}
 					}
-					else if(task->get_size() >1){
+					else if(dynamic_cast<TaskList*>(task) != nullptr){
 						for(auto task2: task->get_list()){
 							if(this->print->print(task2)){
 								task2->display();
@@ -107,6 +121,31 @@ class TaskList: public BaseTasks{
                                 }
   			}
 		}
+		virtual void del(){
+			std::vector<BaseTasks*>::iterator it;
+			for(it = list.begin(); it != list.end(); it++){
+				list.erase(it);
+			}
+		}
+		virtual void del_task(BaseTasks* t){
+			if(t == nullptr){
+				std::cout << "TASK DOES NOT EXIST" << std::endl;
+			}
+			else{
+				for(auto task: list){
+					if(task == t){
+						list.erase(task);
+						t.del();
+					}
+				}
+			}
+		}
+		virtual void del_at(int id){
+			auto it = list.begin() + id;
+			list.at(id)->del();
+			list.erase(it);
+		}
+			 		
 };
 #endif //__TASKLIST_HPP__
  
