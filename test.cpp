@@ -3,6 +3,8 @@
 
 #include "gtest/gtest.h"
 
+#include "tasklist_test.hpp"
+
 // ADD UNIT TESTS HERE
 
 int main(int argc, char **argv) { // Using Google Test Git Submodule to run the Unit Tests
