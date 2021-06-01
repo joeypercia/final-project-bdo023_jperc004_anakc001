@@ -53,5 +53,10 @@ This class diagram included 2 design patterns composite and strategy. The compos
  - There are also a delete and edit feature. Users can pass in new title, description, type, due date, or priority number to modify a task or a list using the edit() function. edit_at() helps edit a specific task or sublist in a list.
  - The del(int id) functions help delete a specific task or sublist in a list using its index number.     
  ## Testing
- > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
+ - We test our program using a series of unit tests on all the main functions (features).
+ - First we tested the constructor of a single task and its display formats. We also tested the edit() feature on a single task.
+ - Second we tested the constructor of a list and make sure we can add tasks to a list. We then tested the display formats to make sure specific tasks are output based on their properties. 
+ - Third we tested the adding of sublist to a list, we make sure that the display formats logic still work when there are sublists in a list.
+ - Fourth, we tested the edit and delete features on a list to make sure that we can edit or delete a specific task a sublist in a list.
+ - Finally we make sure that the program executes and runs without any errors, bugs all memory leaks.  
  
