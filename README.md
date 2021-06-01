@@ -43,7 +43,7 @@ This class diagram included 2 design patterns composite and strategy. The compos
  
  ## Screenshots
  Inputs from main:
- ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs.PNG)
+ ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs.PNG) <br />
  Command line inputs and outputs:
  ![outputs](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs%232.PNG)
  
