@@ -127,19 +127,6 @@ class TaskList: public BaseTasks{
 				list.erase(it);
 			}
 		}
-		virtual void del_task(BaseTasks* t){
-			if(t == nullptr){
-				std::cout << "TASK DOES NOT EXIST" << std::endl;
-			}
-			else{
-				for(auto task: list){
-					if(task == t){
-						list.erase(task);
-						t.del();
-					}
-				}
-			}
-		}
 		virtual void del_at(int id){
 			auto it = list.begin() + id;
 			list.at(id)->del();

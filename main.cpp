@@ -30,20 +30,27 @@ int main(int argc, const char* argv[])
 	HW_fam.add(&family);
 	HW_fam.add(&school);
 	
+	HW_fam.display();
+	//work.del();
+	school.del_at(5);
+	HW_fam.display();
+	
+	/*
 	HW_fam.set_print(new Print_top5(&HW_fam));
         HW_fam.display();
 	hw1.edit("Math#2", "Integral#1", "study", "05/17/2021", 1);
 	HW_fam.edit_list("School&fam", "to do this week", 0);
-		
+			
 	HW_fam.set_print(new Print_type1(&HW_fam));
 	HW_fam.display();
 	HW_fam.set_print(new Print_type2(&HW_fam));
 	HW_fam.display();
+	work.del();
 	HW_fam.set_print(new Print_type3(&HW_fam));
 	HW_fam.display();
 	HW_fam.set_print(new Print_date(&HW_fam, "05/19/2021"));
 	HW_fam.display();
-	
+	*/
 	
 
 

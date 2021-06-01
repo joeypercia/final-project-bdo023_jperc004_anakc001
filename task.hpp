@@ -16,7 +16,8 @@ class Task: public BaseTasks{
 		std::string due_date;
 		int priority;
 		Print* print = nullptr;
-		
+		bool deleted = false;
+			
 		std:: string t1;
 		std:: string t2;
 		std:: string t3;
@@ -114,15 +115,20 @@ class Task: public BaseTasks{
 		}
 				
 		virtual void display(){
-			std::cout << this->get_title() << std::endl;
-			std::cout << this->get_description() << std::endl;
-			std::cout << "Type: " << this->get_type() << std::endl;
-			std::cout << "Due date: " <<  this->get_due_date() << std::endl;
-			std::cout << "Priority: " <<  this->get_priority() << std::endl;
-			std::cout << "====================================" << std::endl;
+			if(deleted){
+				std::cout << "" << std::endl;
+			}
+			else{
+				std::cout << this->get_title() << std::endl;
+				std::cout << this->get_description() << std::endl;
+				std::cout << "Type: " << this->get_type() << std::endl;
+				std::cout << "Due date: " <<  this->get_due_date() << std::endl;
+				std::cout << "Priority: " <<  this->get_priority() << std::endl;
+				std::cout << "====================================" << std::endl;
+			}
 		}
 		virtual void del(){
-			delete this;
+			this->deleted = true;
 		}
 
 };
