@@ -142,6 +142,8 @@ TEST(TaskListTitle, titleSet4_SpecialChars) {
 // end suite
 
 // Set description function
+// Doesn't seem to be a lot to test for this function.
+// Just a normal set description function
 TEST(TaskListDescription, descSet1_normalCase) {
     TaskList test;
     
@@ -172,13 +174,12 @@ TEST(TaskListDueDate, dueSet_standardDate2) {
 
     EXPECT_EQ(test.get_due_date(), "12/31/2100");
 }
-TEST(TaskListDueDate, DISABLED_dueSet_incorrectFormat) {
+TEST(TaskListDueDate, dueSet_incorrectFormat) {
     // Not sure about this test case:
     // This test case checks if the due date is appropriate
     // Format: MM/DD/YYYY
     // However, this edge case checks if the due date is invalid since
     //  a 13th month doesn't exist, and a 32nd day doesn't exist.
-    // Disabled this test if we're not going to fix this issue.
 
     TaskList test;
 
@@ -186,6 +187,19 @@ TEST(TaskListDueDate, DISABLED_dueSet_incorrectFormat) {
 
     EXPECT_EQ(test.get_due_date(), "Invalid");
     // EXPECT_EQ(test.get_due_date(), "13/32/2025");
+}
+TEST(TaskListDueDate, dueSet_incorrectFormat2) {
+    // Another edge test case
+    // This function tells the user to set the date in a specific format
+    // Format: MM/DD/YYYY
+    // But what about the user not following that direction?
+
+    TaskList test;
+
+    test.set_due_date("01012021");
+
+    EXPECT_EQ(test.get_due_date(), "01/01/2021");
+    // EXPECT_EQ(test.get_due_date(), "01012021");
 }
 // end due date test suite
 
@@ -271,8 +285,10 @@ TEST(TaskListVector, addTask3) {
     test.add(taskSample5);
     
     EXPECT_EQ(test.get_task(3), taskSample4);
+    EXPECT_EQ(test.get_task(3)->get_title(), taskSample4->get_title());
 }
 
+// Test for delete/remove function 
 TEST(TaskListVector, removeTask1) {
     TaskList test;
 
@@ -294,10 +310,46 @@ TEST(TaskListVector, removeTask1) {
     test.add(taskSample4);
     test.add(taskSample5);
 
-    test.del(0);  // Checks if function deletes task properly.
+    test.del(0);  // Checks if function deletes task from list properly.
     
     EXPECT_EQ(test.get_task(0), taskSample2); // Expects first task to be the 2nd task
+    EXPECT_EQ(test.get_task(0)->get_title(), taskSample2->get_title());
 }
+TEST(TaskListVector, removeTask2) {
+    TaskList test;
 
+    BaseTasks* taskSample1 = new Task("task1", "description1", "type1", "01/01/2001", 1);
+    BaseTasks* taskSample2 = new Task("task2", "description2", "type2", "02/02/2011", 2);
+    BaseTasks* taskSample3 = new Task("task3", "description3", "type3", "03/03/2021", 2);
+    BaseTasks* taskSample4 = new Task("task4", "description4", "type4", "04/04/2031", 3);
+    BaseTasks* taskSample5 = new Task("task5", "description5", "type5", "05/05/2041", 10);
+
+    test.set_title("TitleTest");
+    test.set_description("Description Test");
+    test.set_type("Test Type");
+    test.set_due_date("01/01/2021");
+    test.set_priority(1);
+
+    EXPECT_EQ(test.get_size(), 0);
+
+    test.add(taskSample1); // 0
+    test.add(taskSample2); // 1
+    test.add(taskSample3); // 2
+    test.add(taskSample4); // 3
+    test.add(taskSample5); // 4
+
+    EXPECT_EQ(test.get_size(), 5);
+
+    test.del(0);  // remove taskSample1 from list
+    test.del(2);  // remove taskSample4 from list
+    
+    EXPECT_EQ(test.get_task(0), taskSample2);
+    EXPECT_EQ(test.get_task(0)->get_title(), taskSample2->get_title());
+    EXPECT_EQ(test.get_task(2), taskSample5);
+    EXPECT_EQ(test.get_task(2)->get_title(), taskSample5->get_title());
+    EXPECT_EQ(test.get_size(), 3);
+}
+// end tasklist vector test suite
+// Feel free to add additional unit tests about TaskList class here.
 
 #endif
