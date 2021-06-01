@@ -3,6 +3,7 @@
 
 #include "gtest/gtest.h"
 
+#include "basetasks.hpp"
 #include "task.hpp"
 #include "tasklist.hpp"
 
@@ -171,7 +172,7 @@ TEST(TaskListDueDate, dueSet_standardDate2) {
 
     EXPECT_EQ(test.get_due_date(), "12/31/2100");
 }
-TEST(DISABLED_TaskListDueDate, dueSet_incorrectFormat) {
+TEST(TaskListDueDate, DISABLED_dueSet_incorrectFormat) {
     // Not sure about this test case:
     // This test case checks if the due date is appropriate
     // Format: MM/DD/YYYY
@@ -188,6 +189,115 @@ TEST(DISABLED_TaskListDueDate, dueSet_incorrectFormat) {
 }
 // end due date test suite
 
+// begin set type test suite
+TEST(TaskListType, typeSet_standard) {
+    TaskList test;
+
+    test.set_type("Business");
+
+    EXPECT_EQ(test.get_type(), "Business");
+}
+TEST(TaskListType, typeSet_StringAndNums) {
+    TaskList test;
+
+    test.set_type("Admin 2");
+
+    EXPECT_EQ(test.get_type(), "Admin 2");
+}
+TEST(TaskListType, typeSet_SpecialChar) {
+    TaskList test;
+
+    test.set_type("Robotics @ UC Zoom");
+
+    EXPECT_EQ(test.get_type(), "Robotics @ UC Zoom");
+}
+// note: not sure for edge cases. Only strings.
+// end set type test suite
+
+// begin add task functions
+TEST(TaskListVector, addTask1) {
+    TaskList test;
+
+    BaseTasks* taskSample1 = new Task("task1", "description1", "type1", "01/01/2001", 1);
+    BaseTasks* taskSample2 = new Task("task2", "description2", "type2", "02/02/2001", 2);
+
+    test.set_title("TitleTest");
+    test.set_description("Description Test");
+    test.set_type("Test Type");
+    test.set_due_date("01/01/2021");
+    test.set_priority(1);
+
+    test.add(taskSample1);
+    test.add(taskSample2);
+    
+    EXPECT_EQ(test.get_task(0), taskSample1);
+}
+TEST(TaskListVector, addTask2) {
+    TaskList test;
+
+    BaseTasks* taskSample1 = new Task("task1", "description1", "type1", "01/01/2001", 1);
+    BaseTasks* taskSample2 = new Task("task2", "description2", "type2", "02/02/2001", 2);
+
+    test.set_title("TitleTest");
+    test.set_description("Description Test");
+    test.set_type("Test Type");
+    test.set_due_date("01/01/2021");
+    test.set_priority(1);
+
+    test.add(taskSample1);
+    test.add(taskSample2);
+    
+    EXPECT_EQ(test.get_task(1), taskSample2);
+}
+TEST(TaskListVector, addTask3) {
+    TaskList test;
+
+    BaseTasks* taskSample1 = new Task("task1", "description1", "type1", "01/01/2001", 1);
+    BaseTasks* taskSample2 = new Task("task2", "description2", "type2", "02/02/2011", 2);
+    BaseTasks* taskSample3 = new Task("task3", "description3", "type3", "03/03/2021", 2);
+    BaseTasks* taskSample4 = new Task("task4", "description4", "type4", "04/04/2031", 3);
+    BaseTasks* taskSample5 = new Task("task5", "description5", "type5", "05/05/2041", 10);
+
+    test.set_title("TitleTest");
+    test.set_description("Description Test");
+    test.set_type("Test Type");
+    test.set_due_date("01/01/2021");
+    test.set_priority(1);
+
+    test.add(taskSample1);
+    test.add(taskSample2);
+    test.add(taskSample3);
+    test.add(taskSample4);
+    test.add(taskSample5);
+    
+    EXPECT_EQ(test.get_task(3), taskSample4);
+}
+
+TEST(TaskListVector, removeTask1) {
+    TaskList test;
+
+    BaseTasks* taskSample1 = new Task("task1", "description1", "type1", "01/01/2001", 1);
+    BaseTasks* taskSample2 = new Task("task2", "description2", "type2", "02/02/2011", 2);
+    BaseTasks* taskSample3 = new Task("task3", "description3", "type3", "03/03/2021", 2);
+    BaseTasks* taskSample4 = new Task("task4", "description4", "type4", "04/04/2031", 3);
+    BaseTasks* taskSample5 = new Task("task5", "description5", "type5", "05/05/2041", 10);
+
+    test.set_title("TitleTest");
+    test.set_description("Description Test");
+    test.set_type("Test Type");
+    test.set_due_date("01/01/2021");
+    test.set_priority(1);
+
+    test.add(taskSample1);
+    test.add(taskSample2);
+    test.add(taskSample3);
+    test.add(taskSample4);
+    test.add(taskSample5);
+
+    test.del(0);  // Checks if function deletes task properly.
+    
+    EXPECT_EQ(test.get_task(0), taskSample2); // Expects first task to be the 2nd task
+}
 
 
 #endif
