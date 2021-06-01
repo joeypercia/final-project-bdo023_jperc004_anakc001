@@ -27,12 +27,6 @@
 This class diagram included 2 design patterns composite and strategy. The composite pattern is used to create individual tasks and list of tasks that can contain tasks. The list of tasks can also represent larger tasks that contain smaller subtasks. However a list of tasks doesn't have a certain type because it can contain different types of tasks. Types of tasks will be limited to three types personal, work and study. The strategy pattern is used to filter and print out certain tasks based on their priority, types and due date. 
 ![Class Diagram](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/Project%20Class%20diagram.png)
  
- > ## Final deliverable
- > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
- > Before the demo, you should do the following:
- > * Complete the sections below (i.e. Screenshots, Installation/Usage, Testing)
- > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Kanban board. 
- 
  ## Screenshots
  Inputs from main:
  ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs.PNG) <br />
