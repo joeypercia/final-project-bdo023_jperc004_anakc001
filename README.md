@@ -15,8 +15,9 @@
  - Inputs:
    * Title (string)
    * Description (string)
-   * Types of tasks: personal, work, study (Tasks)
-   * vector<Tasks*> (List of tasks)
+   * Types of tasks: type1, type2, type3 (string passed in through command line)
+   * vector<BaseTasks*> (List of tasks)
+   * Print* print (using to print out certain tasks based on their properties)
  - Outputs:
    * Priority (int)
    * Due Date (string) 
@@ -26,15 +27,6 @@
 This class diagram included 2 design patterns composite and strategy. The composite pattern is used to create individual tasks and list of tasks that can contain tasks. The list of tasks can also represent larger tasks that contain smaller subtasks. However a list of tasks doesn't have a certain type because it can contain different types of tasks. Types of tasks will be limited to three types personal, work and study. The strategy pattern is used to filter and print out certain tasks based on their priority, types and due date. 
 ![Class Diagram](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/Project%20Class%20diagram.png)
  
- > ## Phase III
- > You will need to schedule a check-in with the TA (during lab hours or office hours). Your entire team must be present. 
- > * Before the meeting you should perform a sprint plan like you did in Phase II
- > * In the meeting with your TA you will discuss: 
- >   - How effective your last sprint was (each member should talk about what they did)
- >   - Any tasks that did not get completed last sprint, and how you took them into consideration for this sprint
- >   - Any bugs you've identified and created issues for during the sprint. Do you plan on fixing them in the next sprint or are they lower priority?
- >   - What tasks you are planning for this next sprint.
-
  > ## Final deliverable
  > All group members will give a demo to the TA during lab time. The TA will check the demo and the project GitHub repository and ask a few questions to all the team members. 
  > Before the demo, you should do the following:
