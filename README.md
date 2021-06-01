@@ -49,7 +49,9 @@ This class diagram included 2 design patterns composite and strategy. The compos
  - There are different ways the users can use to display the tasks. Using the set_print() functions, users can out the tasks in the following formats:
    * Print_top5: print out top 5 most prioritized tasks or sublists of a list. 
    * Print_type1: print out all tasks of type1 of a list, including the ones belong to a sublist in that list. (same for Print_type2 and Print_type3).
-   * Print_date: takes in a due date and print out any tasks have that due date, includeing the ones belong to a sublist in that list.  
+   * Print_date: takes in a due date and print out any tasks have that due date, includeing the ones belong to a sublist in that list.
+ - There are also a delete and edit feature. Users can pass in new title, description, type, due date, or priority number to modify a task or a list using the edit() function. edit_at() helps edit a specific task or sublist in a list.
+ - The del(int id) functions help delete a specific task or sublist in a list using its index number.     
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
