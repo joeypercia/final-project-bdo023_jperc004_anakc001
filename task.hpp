@@ -58,6 +58,7 @@ class Task: public BaseTasks{
 		~Task(){
 			delete print;
 		}
+		Task(){ };
 		Task(std::string title, std::string des, std::string type, std::string due_date, int priority, const char* argv[]){
 			this->title = title;
                         this->description = des;
@@ -114,17 +115,27 @@ class Task: public BaseTasks{
 			set_priority(p);
 		}
 				
-		virtual void display(){
+		virtual void display(std::ostream& cout){
 			if(deleted){
-				std::cout << "" << std::endl;
+				cout << "";
 			}
-			else{
-				std::cout << this->get_title() << std::endl;
-				std::cout << this->get_description() << std::endl;
-				std::cout << "Type: " << this->get_type() << std::endl;
-				std::cout << "Due date: " <<  this->get_due_date() << std::endl;
-				std::cout << "Priority: " <<  this->get_priority() << std::endl;
-				std::cout << "====================================" << std::endl;
+			else if (this->print == nullptr) {
+				cout << this->get_title() << std::endl;
+                               	cout << this->get_description() << std::endl;
+                                cout << "Type: " << this->get_type() << std::endl;
+                                cout << "Due date: " <<  this->get_due_date() << std::endl;
+                           	cout << "Priority: " <<  this->get_priority() << std::endl;
+                                cout << "====================================" << std::endl;
+			}
+			else if(this->print != nullptr){
+				if (this->print->print(this)) {
+					cout << this->get_title() << std::endl;
+					cout << this->get_description() << std::endl;
+					cout << "Type: " << this->get_type() << std::endl;
+					cout << "Due date: " <<  this->get_due_date() << std::endl;
+					cout << "Priority: " <<  this->get_priority() << std::endl;
+					cout << "====================================" << std::endl;
+				}
 			}
 		}
 		virtual void del(){

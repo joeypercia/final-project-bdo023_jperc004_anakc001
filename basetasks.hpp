@@ -31,7 +31,7 @@ class BaseTasks {
 		virtual std::string get_type() { }
 		virtual std::string get_due_date(){ } 
 		
-		virtual void display() = 0;
+		virtual void display(std::ostream& cout) = 0;
 		virtual void edit(std::string t, std::string d, std::string type, std::string date, int p) { }
 		virtual void edit_list(std::string t, std::string d, int p){ }
 		virtual void edit_list_at(std::string t, std::string d, std::string type, std::string date, int p, int id){ }

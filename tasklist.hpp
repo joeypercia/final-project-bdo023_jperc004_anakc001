@@ -29,6 +29,7 @@ class TaskList: public BaseTasks{
 		~TaskList(){
 			delete print;
 		}
+		TaskList(){ }
 		TaskList(std::string title, std::string description, int p){
 			this->priority = p;
 			this->title = title;
@@ -82,23 +83,30 @@ class TaskList: public BaseTasks{
                         return this->description;
                 }
 		std::string get_type(){
-
+			return "LIST DOES NOT HAVE TYPE";
+		}
+		std::string get_due_date(){
+			return "LIST DOES NOT HAVE DUE DATE";
 		}
 		void set_print(Print* new_print){
                         delete this->print;
                         print = new_print;
                 }
-		virtual void display(){
-			std::cout<< std::endl << "======== " << this->title << " ========= "<< this->description << " ============ Priority: " << this->priority << std::endl;
+		virtual void display(std::ostream& cout){
+			if(list.size() ==0){
+				cout << "";
+			}
+			else{
+			cout<< std::endl << "======== " << this->title << " ========= "<< this->description << " ============ Priority: " << this->priority << std::endl;
 			if(this->print == nullptr){
 				for(auto task: list){
-					task->display();
+					task->display(cout);
 				}
 			}
 			else if(dynamic_cast<Print_top5*>(print) != nullptr){
 				for(auto task: list){
 					if (this->print->print(task)){
-						task->display();
+						task->display(cout);
 					}
 				}
 			}
@@ -107,29 +115,30 @@ class TaskList: public BaseTasks{
 				for(auto task: list){
                                 	if(dynamic_cast<Task*>(task) != nullptr){
 						if (this->print->print(task)){
-                                        		task->display();
+                                        		task->display(cout);
                                 		}
 					}
 					else if(dynamic_cast<TaskList*>(task) != nullptr){
 						for(auto task2: task->get_list()){
 							if(this->print->print(task2)){
-								task2->display();
+								task2->display(cout);
 							}
 						
 						}
 					}
                                 }
   			}
+			}
 		}
 		virtual void del(){
 			std::vector<BaseTasks*>::iterator it;
 			for(it = list.begin(); it != list.end(); it++){
 				list.erase(it);
 			}
+			list.resize(0);
 		}
 		virtual void del_at(int id){
 			auto it = list.begin() + id;
-			list.at(id)->del();
 			list.erase(it);
 		}
 			 		
