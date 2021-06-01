@@ -42,7 +42,8 @@ This class diagram included 2 design patterns composite and strategy. The compos
  > * Plan one more sprint (that you will not necessarily complete before the end of the quarter). Your In-progress and In-testing columns should be empty (you are not doing more work currently) but your TODO column should have a full sprint plan in it as you have done before. This should include any known bugs (there should be some) or new features you would like to add. These should appear as issues/cards on your Kanban board. 
  
  ## Screenshots
- Inputs:
+ Inputs from main:
+ ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs.PNG)
  ## Installation/Usage
  > Instructions on installing and running your application
  ## Testing
