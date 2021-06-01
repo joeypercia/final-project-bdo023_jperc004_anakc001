@@ -115,7 +115,7 @@ int main()
 			else if (userinput == 'v') {
 				for (int i = 0; i < userList.getsize(); ++i)
 				{
-					if (userList.islist() == true) {
+					if (userList.getTask(i)->islist() == true) {
 						std::cout << i << ": " << userList.get_title(i) << std::endl;
 					}
 				}
@@ -144,9 +144,9 @@ BaseTasks* inputTask() {
 	std::cout << "Please enter title" << std::endl;
 	std::string title, description, tasktype, duedate;
 	int priority;
-	std::cin >> title;
-	std::cout << "Please enter a description" << std::endl;
 	std::cin.ignore(100, '\n');
+	std::getline(std::cin, title);
+	std::cout << "Please enter a description" << std::endl;
 	std::getline(std::cin, description);
 	std::cout << "Please enter the tasktype" << std::endl;
 	std::cin >> tasktype;
@@ -164,9 +164,9 @@ TaskList* inputTaskList() {
 	std::cout << "Please enter title" << std::endl;
 	std::string title, description, tasktype, duedate;
 	int priority;
-	std::cin >> title;
-	std::cout << "Please enter a description" << std::endl;
 	std::cin.ignore(100, '\n');
+	std::getline(std::cin, title);
+	std::cout << "Please enter a description" << std::endl;
 	std::getline(std::cin, description);
 	std::cout << "Please enter the tasktype" << std::endl;
 	std::cin >> tasktype;
