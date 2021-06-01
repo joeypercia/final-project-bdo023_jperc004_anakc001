@@ -41,7 +41,14 @@ This class diagram included 2 design patterns composite and strategy. The compos
  ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs%233.PNG)
  ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs%234.PNG)
  
- ## Installation/Usage
+ ## Installation
+ To install this program:
+ - First, `git clone` this repository (include `--recursive` so googletest submodule is loaded)
+ - Next, run `cmake3 .` command to build the required makefiles to build/compile program (For machines other than hammer, you can just run `cmake .`) 
+ - After that, run `make` to build and compile the program.
+ - Installation should be done at this point. Try running `./main` or `./test` to verify it is working correctly.
+ 
+ ## Usage
  - Our program supports a task scheduler that can create tasks and lists of tasks(a list can contain other lists to create sublists of tasks).
  - The constructor of a single task takes in 4 strings as its title, description, type and due date. It also takes in another integer as its priority. This constructos also takes inputs from the command line so that the users can input different types of tasks (we limit it at 3 types).
  - Users can also create lists of tasks. A list only has a title, a description and a priority number. It does not have a specific due date or type because it should contains smaller tasks that can have different types and due dates. A list constructor takes in two strings for title and description and one integer for priority.
