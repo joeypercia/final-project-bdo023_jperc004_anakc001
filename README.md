@@ -42,7 +42,8 @@ This class diagram included 2 design patterns composite and strategy. The compos
  ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs%234.PNG)
  
  ## Installation/Usage
- > Instructions on installing and running your application
+ - Our program supports a task scheduler that can create tasks and lists of tasks(a list can contain other lists to create sublists of tasks).
+ - The constructor of a single task take in 4 strings as its title, description, type and due date. It also takes in another integer as its priority. This constructos also takes inputs from the command line so that the users can input different types of tasks (we limit it at 3 types). 
  ## Testing
  > How was your project tested/validated? If you used CI, you should have a "build passing" badge in this README.
  
