@@ -25,15 +25,17 @@
   
 # Class Diagram
 This class diagram included 2 design patterns composite and strategy. The composite pattern is used to create individual tasks and list of tasks that can contain tasks. The list of tasks can also represent larger tasks that contain smaller subtasks. However a list of tasks doesn't have a certain type because it can contain different types of tasks. Types of tasks will be limited to three types personal, work and study. The strategy pattern is used to filter and print out certain tasks based on their priority, types and due date. 
-![Class Diagram](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/Project%20Class%20diagram.png)
- 
+![Project Class diagram](https://user-images.githubusercontent.com/81598667/222568433-819e31c5-6a47-4794-bdb3-d326d226e356.png)
+
  ## Screenshots
  Inputs from main:
- ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs.PNG) <br />
+ ![inputs](https://user-images.githubusercontent.com/81598667/222568461-940671d4-3108-4d87-be66-3eb47030c5cc.png) <br>
+
  Command line inputs and outputs:
- ![outputs](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs%232.PNG) 
- ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs%233.PNG)
- ![Inputs#1](https://github.com/cs100/final-project-bdo023_jperc004_anakc001/blob/master/images/inputs%234.PNG)
+ ![inputs#2](https://user-images.githubusercontent.com/81598667/222568506-4f380930-265b-4d26-8ed6-f8a4387088da.png) <br>
+ ![inputs#3](https://user-images.githubusercontent.com/81598667/222568534-56db6207-bbab-4d25-8b20-7d1c6d82625e.png) <br>
+ ![inputs#4](https://user-images.githubusercontent.com/81598667/222568579-2b06e973-3797-4da4-99f4-0395ac019cc7.png) <br>
+
  
  ## Installation
  To install this program:
